@@ -6,11 +6,26 @@ app = Flask(__name__)
 # we only need this if we want to start doing stuff with the session
 app.config['SECRET_KEY'] = "someth1ng super secret and maybe even rand0m"
 
+app_reviews = {
+    "1": {
+        "title": "reliefQ",
+        "slogan": "see what matters.",
+        "icon": "heart.png",
+        "next": "2"
+    },
+    "2": {
+        "title": "reliefQRS",
+        "slogan": "see what matters.12",
+        "icon": "heart.png",
+        "next": "3"
+    }
+}
+
 def get_app_reviews():
     con = sqlite3.connect("database.sqlite")
     cur = con.cursor()
     cur.execute("""
-        SELECT id, title, slogan
+        SELECT id, title, slogan, icon, next
         FROM app_review
         """)
 
@@ -22,11 +37,17 @@ def get_app_reviews():
     return results
 
 @app.route("/", strict_slashes=False)
-@app.route("/restore/<hash>", strict_slashes=False)
-def show_review(hash=None):
+def home():
+    return render_template("home.html")
+
+@app.route("/about", strict_slashes=False)
+def about():
+    return render_template("about.html")
+
+@app.route("/review/app/", strict_slashes=False)
+@app.route("/review/app/<app_id>", strict_slashes=False)
+# @app.route("/review/<hash>", strict_slashes=False)
+def show_review(app_id="1", hash=None):
     #get_app_reviews()
-    app_review = {
-        "title":"reliefQ",
-        "slogan": "see what matters."
-    }
-    return render_template("review.html", app_review=app_review)
+    
+    return render_template("review.html", app_review=app_reviews[app_id])

@@ -2,41 +2,43 @@
 <html lang="en">
 
 <head>
-    <style>
-        /* .container {
-            margin: auto;
-        }
-        .card {
-            margin: auto;
-        }
-        .col-md-4 {
-            margin: right;
-            width: 50%;
-            border: 3px solid black;
-            padding: 10px;
-        } */
-        .icon {
-            margin: auto;
-            border-radius: 8px;
-            position: relative;
-            top: 5px;
-        }
-        img { 
-            margin: auto;
-            border-radius: 8px;
-        }
-        /* h1 {position: relative; left: 350px;}
-        h5 {text-align: center;}
-        h6 {text-align: center;} */
-    </style>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://w3.cs.jmu.edu/stewarmc/bootstrap.min.css" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">EthicOS App Portal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/review/app">Review</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+            </ul>
+            <div class="my-2 my-lg-0">
+                <img src="{{url_for('static', filename='stewart.jpg')}}" alt="User Avatar">
+                <span class="text-light">Michael</span>
+                <a href="#" class="btn btn-danger my-2 my-sm-0" type="submit">Logout</a>
+            </form>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        
+    </div>
     {% block content %}
     {% endblock %}
 
