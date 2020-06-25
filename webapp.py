@@ -30,6 +30,14 @@ app_reviews = {
     }
 }
 
+approved_apps = [
+    app_reviews["2"]
+]
+
+rejected_apps = [
+    app_reviews["1"], app_reviews["3"]
+]
+
 def get_app_reviews():
     con = sqlite3.connect("database.sqlite")
     cur = con.cursor()
@@ -61,12 +69,16 @@ def show_review(app_id="1", hash=None):
     
     return render_template("review.html", app_review=app_reviews[app_id])
 
-def show_review(app_id="2", hash=None):
-    #get_app_reviews()
+# def show_review(app_id="2", hash=None):
+#     #get_app_reviews()
     
-    return render_template("review.html", app_review=app_reviews[app_id])
+#     return render_template("review.html", app_review=app_reviews[app_id])
 
-def show_review(app_id="3", hash=None):
-    #get_app_reviews()
+# def show_review(app_id="3", hash=None):
+#     #get_app_reviews()
     
-    return render_template("review.html", app_review=app_reviews[app_id])
+#     return render_template("review.html", app_review=app_reviews[app_id])
+
+@app.route("/review/results", strict_slashes=False)
+def results():
+    return render_template("results.html", approved_apps=approved_apps, rejected_apps=rejected_apps)

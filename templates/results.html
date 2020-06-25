@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}
+ethicOS App Portal - Results
+{% endblock %}
+{% block content %}
+
+<div class="container">
+
+    <div class="user-results">
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <h1>Results</h1>
+                <p>Bacon ipsum dolor amet flank pork belly jowl rump shoulder andouille frankfurter chicken. 
+                
+                    Turkey ground round cow shoulder pork loin biltong buffalo capicola, drumstick andouille chislic ball tip picanha. Sirloin bresaola kielbasa meatball prosciutto ham hock chislic spare ribs pork belly chuck shankle meatloaf leberkas. Pork shank burgdoggen tri-tip ground round corned beef tongue jowl filet mignon doner beef ribs. Cow shank pork belly kevin swine bacon. Cupim ham pork turkey tri-tip pork belly meatloaf chuck cow porchetta tail ground round pork loin tenderloin drumstick. Doner sirloin burgdoggen ham. Biltong burgdoggen shank beef ribs ham ground round, landjaeger pastrami jerky tongue chuck flank. Kevin biltong ham hock picanha pork.</p>
+
+                    <p>Pork frankfurter pig sausage kielbasa. T-bone bresaola doner strip steak short ribs. Kevin ham ball tip short loin, spare ribs turkey porchetta. Jerky strip steak andouille pork belly ribeye. Chicken porchetta swine, shankle burgdoggen cupim tail pig andouille salami sirloin shank pork.</p>
+
+                    <p>Brisket venison jerky, ribeye turkey pork belly sirloin porchetta. Kielbasa fatback boudin flank, porchetta meatloaf cow andouille short loin. Chicken flank filet mignon salami meatloaf, alcatra turducken bacon meatball pork loin ribeye spare ribs burgdoggen brisket shankle. Beef ribs shank bacon, tongue shankle meatball landjaeger. Landjaeger pig kevin, tongue pork chop pork belly venison ribeye beef ribs capicola burgdoggen rump chuck pastrami.</p>
+
+                    <p>Salami ball tip biltong shankle alcatra brisket corned beef bacon frankfurter capicola cupim short loin pork belly. Hamburger doner flank meatball burgdoggen, cupim t-bone shank. Pork chislic beef pancetta capicola. Bresaola boudin jowl turkey flank, t-bone porchetta leberkas.</p>
+            </div>
+
+            <div class="col-md-3">
+                <h1>Approved</h1>
+                {% for approved in approved_apps %}
+                    <img src="{{url_for('static', filename=approved.icon)}}" class="app-icon float-sm-left img-fluid"
+                        alt=" App Icon">
+                    <h4 class="app-title">{{approved.title}}</h4>
+                    <h5 class="app-slogan">{{approved.slogan}}</h5>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-3">
+                <h1>Rejected</h1>
+                {% for rejected in rejected_apps %}
+                    <img src="{{url_for('static', filename=rejected.icon)}}" class="app-icon float-sm-left img-fluid"
+                        alt=" App Icon">
+                    <h4 class="app-title">{{rejected.title}}</h4>
+                    <h5 class="app-slogan">{{rejected.slogan}}</h5>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
