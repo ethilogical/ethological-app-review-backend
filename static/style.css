@@ -2,25 +2,58 @@
     margin-top: 10px;
 }
 
-.app-review .btn {
-    /* margin-bottom: 20px; */
+.app-review .app-icon {
+    max-height: 94px;
+    margin-right: 20px;
+}
+
+.app-review .app-preview {
+    max-height: 546px;
+    max-width: 275px;
 }
 
 .app-review .review-actions {
     min-height: 100%;
 }
 
-.app-review .app-icon {
-    max-height: 94px;
-    margin-right: 20px;
+.app-review .row div.border-right {
+    border-width: 3px;
 }
 
-.navbar img {
-    max-height: 40px;
+.app-review .row div.border-bottom {
+    border-width: 3px;
+}
+
+.landing .row div.border-left {
+    border-width: 3px;
+}
+
+.app-review .h3 {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
 body * {
     font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+.landing .h1 {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+.landing .h4 {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+.landing .h5 {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+.logo {
+    max-height: 150px;
+}
+
+.navbar img {
+    max-height: 40px;
 }
 
 .user-results .app-icon {
