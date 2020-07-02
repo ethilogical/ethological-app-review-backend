@@ -10,18 +10,19 @@ ethicOS App Portal - Review
 
         <div class="row border-bottom border-primary">
 
-            <div class="col-md-4 mb-3">
+            <div class="col-md-4 mb-5">
                 <p class="h3 text-primary">App Preview</p>
-                <img src="/static/reliefQ.png" class="app-preview" alt="App Preview">
+                <img src="{{url_for('static', filename=app_review.preview)}}" class="app-preview"
+                    alt=" App Preview">
             </div>
 
             <div class="col-md-5 border-right border-left border-primary">
                 <p class="h3 text-primary">App Description</p>
                 <img src="{{url_for('static', filename=app_review.icon)}}" class="app-icon float-sm-left"
                     alt=" App Icon">
-                <h1 class="app-title">{{app_review.title}}</h1>
-                <h2 class="app-slogan">{{app_review.slogan}}</h2>
-                <p class="app-description">{{app_review.description}}</p>
+                <h3 class="app-title">{{app_review.title}}</h3>
+                <h4 class="app-slogan text-muted">{{app_review.slogan}}</h4>
+                <p class="app-description mt-3">{{app_review.description}}</p>
             </div>
 
             <div class="col-md border-primary">

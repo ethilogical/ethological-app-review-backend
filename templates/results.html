@@ -10,7 +10,7 @@ ethicOS App Portal - Results
 
         <div class="row">
 
-            <div class="col-md-6">
+            <div class="col-md-6 border-right border-primary">
                 <h1>Results</h1>
                 <p>Bacon ipsum dolor amet flank pork belly jowl rump shoulder andouille frankfurter chicken. 
                 
@@ -23,13 +23,13 @@ ethicOS App Portal - Results
                     <p>Salami ball tip biltong shankle alcatra brisket corned beef bacon frankfurter capicola cupim short loin pork belly. Hamburger doner flank meatball burgdoggen, cupim t-bone shank. Pork chislic beef pancetta capicola. Bresaola boudin jowl turkey flank, t-bone porchetta leberkas.</p>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-3 border-right border-primary">
                 <h1>Approved</h1>
                 {% for approved in approved_apps %}
                     <img src="{{url_for('static', filename=approved.icon)}}" class="app-icon float-sm-left img-fluid"
                         alt=" App Icon">
                     <h4 class="app-title">{{approved.title}}</h4>
-                    <h5 class="app-slogan">{{approved.slogan}}</h5>
+                    <h5 class="app-slogan mb-4">{{approved.slogan}}</h5>
                 {% endfor %}
             </div>
 
@@ -39,7 +39,7 @@ ethicOS App Portal - Results
                     <img src="{{url_for('static', filename=rejected.icon)}}" class="app-icon float-sm-left img-fluid"
                         alt=" App Icon">
                     <h4 class="app-title">{{rejected.title}}</h4>
-                    <h5 class="app-slogan">{{rejected.slogan}}</h5>
+                    <h5 class="app-slogan mb-4">{{rejected.slogan}}</h5>
                 {% endfor %}
             </div>
         </div>
