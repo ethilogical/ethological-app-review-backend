@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}
+ethicOS App Portal - Review
+{% endblock %}
+{% block content %}
+
+<div class="container">
+
+    <div class="app-review">
+
+        <div class="row border-bottom border-primary">
+
+            <div class="col-md-4 mb-5">
+                <p class="h3 text-primary">App Preview</p>
+                <img src="{{url_for('static', filename=app_review.preview)}}" class="app-preview"
+                    alt=" App Preview">
+            </div>
+
+            <div class="col-md-5 border-right border-left border-primary">
+                <p class="h3 text-primary">App Description</p>
+                <img src="{{url_for('static', filename=app_review.icon)}}" class="app-icon float-sm-left"
+                    alt=" App Icon">
+                <h3 class="app-title">{{app_review.title}}</h3>
+                <h4 class="app-slogan text-muted">{{app_review.slogan}}</h4>
+                <p class="app-description mt-3">{{app_review.description}}</p>
+            </div>
+
+            <div class="col-md border-primary">
+                <p class="h3 text-primary">Ethical Guidelines</p>
+                <ol>
+                    <li><a
+                            href="https://www.acm.org/code-of-ethics#h-1.1-contribute-to-society-and-to-human-well-being,-acknowledging-that-all-people-are-stakeholders-in-computing.">
+                            Contributes to society and to human well-being.</a></li>
+                    <br>
+                    <li><a href="https://www.acm.org/code-of-ethics#h-1.2-avoid-harm.">Avoids harm.</a></li>
+                    <br>
+                    <li><a href="https://www.acm.org/code-of-ethics#h-1.3-be-honest-and-trustworthy.">Is honest and
+                            trustworthy.</a></li>
+                    <br>
+                    <li><a href="https://www.acm.org/code-of-ethics#h-1.4-be-fair-and-take-action-not-to-discriminate.">
+                            Is fair and takes action not to discriminate.</a></li>
+                    <br>
+                    <li><a
+                            href="https://www.acm.org/code-of-ethics#h-1.5-respect-the-work-required-to-produce-new-ideas,-inventions,-creative-works,-and-computing-artifacts.">
+                            Respects the work required to produce new ideas, inventions, creative works, and computing
+                            artifacts.</a></li>
+                    <br>
+                    <li><a href="https://www.acm.org/code-of-ethics#h-1.6-respect-privacy.">Respects privacy.</a></li>
+                    <br>
+                    <li><a href="https://www.acm.org/code-of-ethics#h-1.7-honor-confidentiality.">Honors
+                            confidentiality.</a></li>
+                </ol>
+            </div>
+        </div>
+
+        <!--Text box for feedback-->
+        <div class="row">
+            <div class="col-md mb-3 text-center">
+                <br>
+                <form>
+                    <div class="form-group">
+                      <label for="exampleAppFeedback1">Why is this app Ethical or Unethical?</label>
+                      <input type="decision" class="form-control" id="exampleAppFeedback1" aria-describedby="decisionDescription" placeholder="Briefly explain.">
+                      <small id="exampleAppFeedback1" class="form-text text-muted">Here's your chance to give us more information on your decision. Why are you choosing to approve or reject this app?</small>
+                    </div>
+                </form>            
+            </div>
+        </div>
+
+        <!--Approve/Reject Buttons-->
+        <div class="row">
+            <div class="col-md mb-3 text-center">
+                <a href="/review_3/app/{{app_review.next}}" class="btn btn-lg btn-success btn-block">Approve</a>
+                <a href="/review_3/app/{{app_review.next}}" class="btn btn-lg btn-danger btn-block">Reject</a>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+{% endblock %}

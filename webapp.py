@@ -38,26 +38,15 @@ app_reviews = {
         "next": "3"
     },
     "3": {
-        "title": "Lorem ipsum",
-        "slogan": "There is no one who loves pain itself",
-        "icon": "placeholder_icon.png",
-        "preview": "placeholder.png",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec vehicula felis. "
-                        + "Suspendisse sollicitudin ante lacus, ac mattis odio elementum et. Vivamus sit "
-                        + "amet efficitur odio. Sed commodo auctor massa, in eleifend lectus porta sed. Maecenas "
-                        + "id massa eleifend, tincidunt mi sed, sagittis erat. Nullam volutpat, arcu a rhoncus "
-                        + "ultrices, lectus libero hendrerit odio, sed vehicula nisl dolor ac lectus. Praesent "
-                        + "posuere eros quis ligula pharetra facilisis. Duis dictum eu dui eu sagittis. Suspendisse "
-                        + "et risus in nunc imperdiet ultricies. Nam at augue quis enim venenatis fermentum eu "
-                        + "accumsan neque. Maecenas porta mauris massa, sit amet commodo augue auctor sed. Donec "
-                        + "congue at libero at tincidunt. Sed tristique ac diam ut convallis. Class aptent taciti "
-                        + "sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam ut felis sit "
-                        + "amet nunc tincidunt vestibulum. Mauris rhoncus mattis volutpat. Nulla vitae lacus et "
-                        + "lacus porttitor lacinia. Etiam non ante ut elit cursus tincidunt. Aenean nec nulla pulvinar, "
-                        + "dignissim eros nec, consectetur lorem. Suspendisse iaculis tortor id nibh consequat, eget "
-                        + "efficitur enim fermentum. Sed ac mi sit amet dui cursus volutpat sed id nulla. Maecenas "
-                        + "malesuada neque vitae orci efficitur bibendum. Vivamus ac nisi posuere elit egestas varius "
-                        + "vitae ac lacus.",
+        "title": "Unmasked Unmasker",
+        "slogan": "Protect yourself.",
+        "icon": "unmasked_icon.png",
+        "preview": "unmasked_preview.png",
+        "description": "The Virginia state government is distributing this app as a part of it's ordinance that "
+                        + "individuals of age 10 and up must wear face coverings in public. State residents who "
+                        + "report unmasked individuals who can be correctly identified will be financially "
+                        + "compensated. We hope that, by citizens policing each other, it will encourage more "
+                        + "individuals to follow face covering ordinances in public.",
         "result": "",
         "next": "results"
     }
@@ -96,7 +85,6 @@ def about():
 
 @app.route("/review/app/", strict_slashes=False)
 @app.route("/review/app/<app_id>", strict_slashes=False)
-# @app.route("/review/<hash>", strict_slashes=False)
 def show_review(app_id="1", hash=None):
     #get_app_reviews()
     
@@ -112,6 +100,24 @@ def show_review(app_id="1", hash=None):
     
 #     return render_template("review.html", app_review=app_reviews[app_id])
 
+@app.route("/review_1/app/", strict_slashes=False)
+@app.route("/review_1/app/<app_id>", strict_slashes=False)
+def show_review_1(app_id="1", hash=None):
+    return render_template("review_1.html", app_review=app_reviews[app_id])
+
+@app.route("/review_2/app/", strict_slashes=False)
+@app.route("/review_2/app/<app_id>", strict_slashes=False)
+def show_review_2(app_id="1", hash=None):
+    return render_template("review_2.html", app_review=app_reviews[app_id])
+
+@app.route("/review_3/app/", strict_slashes=False)
+@app.route("/review_3/app/<app_id>", strict_slashes=False)
+def show_review_3(app_id="1", hash=None):
+    return render_template("review_3.html", app_review=app_reviews[app_id])
+
+@app.route("/review_1/app/results", strict_slashes=False)
+@app.route("/review_2/app/results", strict_slashes=False)
+@app.route("/review_3/app/results", strict_slashes=False)
 @app.route("/review/app/results", strict_slashes=False)
 def results():
     return render_template("results.html", approved_apps=approved_apps, rejected_apps=rejected_apps)

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %}
+ethicOS App Portal - Review
+{% endblock %}
+{% block content %}
+<div class="container">
+
+    <div class="app-review">
+
+        <div class="row border-bottom border-primary">
+
+            <div class="col-md-4 mb-5">
+                <p class="h3 text-primary">App Preview</p>
+                <img src="{{url_for('static', filename=app_review.preview)}}" class="app-preview" alt=" App Preview">
+            </div>
+
+            <div class="col-md-5 border-right border-left border-primary">
+                <p class="h3 text-primary">App Description</p>
+                <img src="{{url_for('static', filename=app_review.icon)}}" class="app-icon float-sm-left"
+                    alt=" App Icon">
+                <h3 class="app-title">{{app_review.title}}</h3>
+                <h4 class="app-slogan text-muted">{{app_review.slogan}}</h4>
+                <p class="app-description mt-3">{{app_review.description}}</p>
+            </div>
+
+            <div class="col-md border-primary">
+                <p class="h3 text-primary">Ethical Guidelines</p>
+                <ol>
+                    <li><a
+                            href="https://www.acm.org/code-of-ethics#h-1.1-contribute-to-society-and-to-human-well-being,-acknowledging-that-all-people-are-stakeholders-in-computing.">
+                            Contributes to society and to human well-being.</a></li>
+                    <br>
+                    <li><a href="https://www.acm.org/code-of-ethics#h-1.2-avoid-harm.">Avoids harm.</a></li>
+                    <br>
+                    <li><a href="https://www.acm.org/code-of-ethics#h-1.3-be-honest-and-trustworthy.">Is honest and
+                            trustworthy.</a></li>
+                    <br>
+                    <li><a href="https://www.acm.org/code-of-ethics#h-1.4-be-fair-and-take-action-not-to-discriminate.">
+                            Is fair and takes action not to discriminate.</a></li>
+                    <br>
+                    <li><a
+                            href="https://www.acm.org/code-of-ethics#h-1.5-respect-the-work-required-to-produce-new-ideas,-inventions,-creative-works,-and-computing-artifacts.">
+                            Respects the work required to produce new ideas, inventions, creative works, and computing
+                            artifacts.</a></li>
+                    <br>
+                    <li><a href="https://www.acm.org/code-of-ethics#h-1.6-respect-privacy.">Respects privacy.</a></li>
+                    <br>
+                    <li><a href="https://www.acm.org/code-of-ethics#h-1.7-honor-confidentiality.">Honors
+                            confidentiality.</a></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md mt-3 mb-3">
+                <p class="h5 text-primary text-center">Please rate this app on the following metrics:</p>
+            </div>
+        </div>
+
+        <!--Slide 1-->
+        <div class="row">
+            <div class="col-md mt-3 text-center">
+                <p class="text-primary">Likelihood you would download this app:</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md mt-3 mb-3 text-center">
+                <!--slider here-->
+                <b>0</b>
+                <input type="text" id="slider-input" class="slider" value="10"/>
+                <b>10</b>
+            </div>
+        </div>
+
+        <!--Slide 2-->
+        <div class="row">
+            <div class="col-md mt-3 text-center">
+                <p class="text-primary">Likelihood this app would result in a lawsuit against us:</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md mt-3 mb-3 text-center">
+                <!--slider here-->
+                <b>0</b>
+                <input type="text" id="slider-input-2" class="slider" value="10"/>
+                <b>10</b>
+            </div>
+        </div>
+
+        <!--Slide 3-->
+        <div class="row">
+            <div class="col-md mt-3 text-center">
+                <p class="text-primary">Amount this app adheres to our ethical guidelines:</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md mt-3 mb-3 text-center">
+                <!--slider here-->
+                <b>0</b>
+                <input type="text" id="slider-input-3" class="slider" value="10"/>
+                <b>10</b>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md mt-3 mb-3 text-center">
+                <a href="/review_2/app/{{app_review.next}}" class="btn btn-lg btn-success">Submit</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

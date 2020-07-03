@@ -2,11 +2,14 @@
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://w3.cs.jmu.edu/stewarmc/bootstrap.min.css" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap-slider.css')}}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <!--Added for slider-->
+    <title>{% block title %}{% endblock %}</title>
 </head>
 
 <body>
@@ -16,7 +19,7 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -30,18 +33,19 @@
                 </li>
             </ul>
             <div class="my-2 my-lg-0">
-                <img src="{{url_for('static', filename='stewart.jpg')}}" alt="User Avatar">
+                <img class="rounded" src="{{url_for('static', filename='stewart.jpg')}}" alt="User Avatar">
                 <span class="text-light">Michael</span>
                 <a href="#" class="btn btn-danger my-2 my-sm-0" type="submit">Logout</a>
-            </form>
-        </div>
+                </form>
+            </div>
     </nav>
     <div class="container-fluid">
-        
+
     </div>
     {% block content %}
     {% endblock %}
 
+    <!--Added by Stewart-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -51,6 +55,41 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+
+    <!--Slider stuff for example 3-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="{{url_for('static', filename='bootstrap-slider.js')}}"></script>
+
+    <!--Slider 1 for example 3-->
+    <script>
+        $(document).ready(function () {
+            var mySlider = $("#slider-input").slider({
+                min: 0,
+                max: 10,
+                value: 1,
+                step: 1
+            });
+        });
+
+        $(document).ready(function () {
+            var mySlider = $("#slider-input-2").slider({
+                min: 0,
+                max: 10,
+                value: 1,
+                step: 1
+            });
+        });
+
+        $(document).ready(function () {
+            var mySlider = $("#slider-input-3").slider({
+                min: 0,
+                max: 10,
+                value: 1,
+                step: 1
+            });
+        });
+    </script>
 </body>
 
 </html>
