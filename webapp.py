@@ -1,10 +1,16 @@
 from flask import Flask, render_template, session
-import sqlite3
+from flask_sqlalchemy import SQLAlchemy
+import model
 
 app = Flask(__name__)
 
 # we only need this if we want to start doing stuff with the session
 app.config['SECRET_KEY'] = "someth1ng super secret and maybe even rand0m"
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////test.db'
+app.config["SQLALCHEMY_POOL_RECYCLE"] = 299                     # taken from PA
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False            # taken from PA
+db = SQLAlchemy(app)
 
 app_reviews = {
     "1": {
