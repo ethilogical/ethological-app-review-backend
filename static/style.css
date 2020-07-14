@@ -29,27 +29,19 @@
 }
 
 .app-review .h3 {
-    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
-.app-review .h5 {
-    font-family: Roboto, Arial, Helvetica, sans-serif;
+* { /* any element in the body */
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
-body * {
-    font-family: Roboto, Arial, Helvetica, sans-serif;
-}
-
-.landing .h1 {
-    font-family: Roboto, Arial, Helvetica, sans-serif;
-}
-
-.landing .h4 {
-    font-family: Roboto, Arial, Helvetica, sans-serif;
+.landing .h1, .landing .h4 { /* child h1 in landing and child h4 in landing */
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
 .landing .h5 {
-    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
 .logo {
