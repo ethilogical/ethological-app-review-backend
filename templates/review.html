@@ -4,99 +4,36 @@ ethicOS App Portal - Review
 {% endblock %}
 {% block content %}
 
-<div class="container">
+<div class="container-fluid">
 
     <div class="progress mt-4 mb-4">
 
-        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
+        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+            aria-valuemax="100"></div>
+    </div>
 
     <div class="app-review">
 
         <div class="row border-bottom border-primary">
 
-            <div class="col-md-4 mb-5">
+            <div class="col-md-3 mb-5">
                 <p class="h3 text-primary">App Preview</p>
-                <img src="{{url_for('static', filename=app_review.preview)}}" class="app-preview"
+                <img src="{{url_for('static', filename=app_review.preview_url)}}" class="app-preview"
                     alt=" App Preview">
             </div>
 
             <div class="col-md-5 border-right border-left border-primary">
                 <p class="h3 text-primary">App Description</p>
-                <img src="{{url_for('static', filename=app_review.icon)}}" class="app-icon float-sm-left"
+                <img src="{{url_for('static', filename=app_review.icon_url)}}" class="app-icon float-sm-left"
                     alt=" App Icon">
                 <h3 class="app-title">{{app_review.title}}</h3>
                 <h4 class="app-slogan text-muted">{{app_review.slogan}}</h4>
                 <p class="app-description mt-3">{{app_review.description}}</p>
             </div>
 
-            <div class="col-md border-primary">
+            <div class="col-md border-primary guidelines">
                 <p class="h3 text-primary">Ethical Guidelines</p>
-                <ol>
-                    <li><a
-                            href="https://www.acm.org/code-of-ethics#h-1.1-contribute-to-society-and-to-human-well-being,-acknowledging-that-all-people-are-stakeholders-in-computing.">
-                            Contributes to society and to human well-being.</a></li>
-                            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                                +
-                            </button>
-                            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                                -
-                            </button>
-                    <br>
-                    <li><a href="https://www.acm.org/code-of-ethics#h-1.2-avoid-harm.">Avoids harm.</a></li>
-                    <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                        +
-                    </button>
-                    <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                        -
-                    </button>
-                    <br>
-                    <li><a href="https://www.acm.org/code-of-ethics#h-1.3-be-honest-and-trustworthy.">Is honest and
-                            trustworthy.</a></li>
-                            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                                +
-                            </button>
-                            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                                -
-                            </button>
-                    <br>
-                    <li><a href="https://www.acm.org/code-of-ethics#h-1.4-be-fair-and-take-action-not-to-discriminate.">
-                            Is fair and takes action not to discriminate.</a></li>
-                            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                                +
-                            </button>
-                            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                                -
-                            </button>
-                    <br>
-                    <li><a
-                            href="https://www.acm.org/code-of-ethics#h-1.5-respect-the-work-required-to-produce-new-ideas,-inventions,-creative-works,-and-computing-artifacts.">
-                            Respects the work required to produce new ideas, inventions, creative works, and computing
-                            artifacts.</a></li>
-                            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                                +
-                            </button>
-                            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                                -
-                            </button>
-                    <br>
-                    <li><a href="https://www.acm.org/code-of-ethics#h-1.6-respect-privacy.">Respects privacy.</a></li>
-                    <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                        +
-                    </button>
-                    <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                        -
-                    </button>
-                    <br>
-                    <li><a href="https://www.acm.org/code-of-ethics#h-1.7-honor-confidentiality.">Honors
-                            confidentiality.</a></li>
-                            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                                +
-                            </button>
-                            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-                                -
-                            </button>
-                </ol>
+                {% include "guidelines.html" %}
             </div>
         </div>
 
@@ -105,17 +42,36 @@ ethicOS App Portal - Review
                 <br>
                 <form>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Why is this ethical or unethical?</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                      <small id="emailHelp" class="form-text text-muted">This is your chance to give us more context on your decision.</small>
+                        <label for="review-explanation">Why is this ethical or unethical?</label>
+                        <textarea name="explanation" id="review-explanation" rows="10"
+                            aria-describedby="emailHelp" class="form-control"></textarea>
+                        <small id="emailHelp" class="form-text text-muted">This is your chance to give us more context
+                            on your decision.</small>
                     </div>
-                <a href="/review/app/{{app_review.next}}" class="btn btn-lg btn-success btn-block">Approve</a>
-                <a href="/review/app/{{app_review.next}}" class="btn btn-lg btn-danger btn-block">Reject</a>
+                    <div class="form-group">
+                        <div class="form-check d-none">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                Default radio
+                            </label>
+                        </div>
+                        <div class="form-check d-none">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                            <label class="form-check-label" for="exampleRadios2">
+                                Second default radio
+                            </label>
+                        </div>
+                        <button type="submit" name="approve" class="btn btn-success">Approve <i
+                                class="fas fa-thumbs-up"></i></button>
+                        <button type="submit" name="reject" class="btn btn-danger">Reject<i
+                                class="fas fa-thumbs-down"></i></button>
+                    </div>
+                </form>
             </div>
         </div>
 
     </div>
-    
+
 </div>
 
 {% endblock %}

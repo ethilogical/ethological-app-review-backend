@@ -32,11 +32,13 @@
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
-* { /* any element in the body */
+* {
+    /* any element in the body */
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
-.landing .h1, .landing .h4 { /* child h1 in landing and child h4 in landing */
+.landing .h1, .landing .h4 {
+    /* child h1 in landing and child h4 in landing */
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
@@ -56,7 +58,20 @@
     max-width: 60px;
 }
 
-/*For example 2*/
-#ex1Slider .slider-selection {
-	background: #BABABA;
+.guidelines ol {
+    padding-left: 1.25rem;
+}
+
+li.guideline {
+    margin-bottom: 1rem;
+}
+
+.count {
+    font-size: 2rem;
+    /* line-height: 3rem; */
+    vertical-align: middle;
+}
+
+.guideline .btn-group {
+    display: inline-block;
 }
