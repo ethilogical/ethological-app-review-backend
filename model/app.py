@@ -1,5 +1,6 @@
 import random
 import string
+from flask_sqlalchemy import SQLAlchemy
 
 # Author: Reece Adkins
 # Date: 14 July 2020
