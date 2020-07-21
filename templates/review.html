@@ -40,7 +40,9 @@ ethicOS App Portal - Review
         <div class="row">
             <div class="col-md mb-3 text-center">
                 <br>
-                <form>
+                <form method="POST" action="/interaction">
+                    <input type="hidden" name="next" value="{{app_review.next}}">
+                    <input type="hidden" name="app_id" value="{{app_review.id}}">
                     <div class="form-group">
                         <label for="review-explanation">Why is this ethical or unethical?</label>
                         <textarea name="explanation" id="review-explanation" rows="10"
@@ -61,9 +63,11 @@ ethicOS App Portal - Review
                                 Second default radio
                             </label>
                         </div>
-                        <button type="submit" name="approve" class="btn btn-success">Approve <i
+                        <input class="d-none" type="radio" name="approved" id="approved_radio" value="true">
+                        <input class="d-none" type="radio" name="approved" id="rejected_radio" value="false">
+                        <button type="submit" name="approve" class="btn btn-success" onclick="document.getElementById('approved_radio').checked=true">Approve <i
                                 class="fas fa-thumbs-up"></i></button>
-                        <button type="submit" name="reject" class="btn btn-danger">Reject<i
+                        <button type="submit" name="reject" class="btn btn-danger" onclick="document.getElementById('rejected_radio').checked=true">Reject<i
                                 class="fas fa-thumbs-down"></i></button>
                     </div>
                 </form>
