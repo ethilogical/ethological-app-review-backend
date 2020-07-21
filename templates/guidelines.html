@@ -1,3 +1,13 @@
+<script>
+const modify = (name, delta) => {
+    const hiddenInput = document.querySelector(`input[name='${name}']`)
+    hiddenInput.value = parseInt(hiddenInput.value,10) + delta
+    const countLabel = document.querySelector(`label[for='${name}'] .count-value`)
+    const countLabelChildren = countLabel.children
+    countLabel.textContent = hiddenInput.value
+    countLabel.children = countLabelChildren
+}
+</script>
 {% macro guideline(i, href, content) -%}
 <li class="guideline">
     <div class="row">
@@ -7,18 +17,20 @@
         <div class="col-xl">
             <div class="btn-group btn-group-lg guideline-count" id="guideline-count-up-{{ i }}">
                 <button type="button" class="btn btn-warning" data-toggle="button" aria-pressed="false"
-                    autocomplete="off">-</button>
+                    autocomplete="off" onclick="modify('guideline-count-up-{{ i }}', -1)">-</button>
                 <button type="button" class="btn btn-info" data-toggle="button" aria-pressed="false"
-                    autocomplete="off">+</button>
+                    autocomplete="off" onclick="modify('guideline-count-up-{{ i }}', 1)">+</button>
             </div>
-            <label class="count text-success" for="guideline-count-up-{{ i }}">0 <i class="fas fa-thumbs-up"></i></label>
+            <input type="hidden" name="guideline-count-up-{{ i }}" value="0">
+            <label class="count text-success" for="guideline-count-up-{{ i }}"><span class="count-value">0</span><i class="fas fa-thumbs-up"></i></label>
             <div class="btn-group btn-group-lg guideline-count" id="guideline-count-down-{{ i }}">
                 <button type="button" class="btn btn-warning" data-toggle="button" aria-pressed="false"
-                    autocomplete="off">-</button>
+                    autocomplete="off" onclick="modify('guideline-count-down-{{ i }}', -1)">-</button>
                 <button type="button" class="btn btn-info" data-toggle="button" aria-pressed="false"
-                    autocomplete="off">+</button>
+                    autocomplete="off" onclick="modify('guideline-count-down-{{ i }}', 1)">+</button>
             </div>
-            <label class="count text-danger" for="guideline-count-down-{{ i }}">0 <i class="fas fa-thumbs-down"></i></label>
+            <input type="hidden" name="guideline-count-down-{{ i }}" value="0">
+            <label class="count text-danger" for="guideline-count-down-{{ i }}"><span class="count-value">0</span><i class="fas fa-thumbs-down"></i></label>
         </div>
     </div>
 </li>

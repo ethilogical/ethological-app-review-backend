@@ -4,16 +4,14 @@ ethicOS App Portal - Review
 {% endblock %}
 {% block content %}
 
-<div class="container-fluid">
+<div class="progress mt-4 mb-4">
 
-    <div class="progress mt-4 mb-4">
+    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+        aria-valuemax="100"></div>
+</div>
 
-        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-            aria-valuemax="100"></div>
-    </div>
-
-    <div class="app-review">
-
+<div class="app-review">
+    <form method="POST" action="/interaction">
         <div class="row border-bottom border-primary">
 
             <div class="col-md-3 mb-5">
@@ -40,42 +38,44 @@ ethicOS App Portal - Review
         <div class="row">
             <div class="col-md mb-3 text-center">
                 <br>
-                <form method="POST" action="/interaction">
-                    <input type="hidden" name="next" value="{{app_review.next}}">
-                    <input type="hidden" name="app_id" value="{{app_review.id}}">
-                    <div class="form-group">
-                        <label for="review-explanation">Why is this ethical or unethical?</label>
-                        <textarea name="explanation" id="review-explanation" rows="10"
-                            aria-describedby="emailHelp" class="form-control"></textarea>
-                        <small id="emailHelp" class="form-text text-muted">This is your chance to give us more context
-                            on your decision.</small>
+
+                <input type="hidden" name="next" value="{{app_review.next}}">
+                <input type="hidden" name="app_id" value="{{app_review.id}}">
+                <div class="form-group">
+                    <label for="review-explanation">Why is this ethical or unethical?</label>
+                    <textarea name="explanation" id="review-explanation" rows="10" aria-describedby="emailHelp"
+                        class="form-control"></textarea>
+                    <small id="emailHelp" class="form-text text-muted">This is your chance to give us more context
+                        on your decision.</small>
+                </div>
+                <div class="form-group">
+                    <div class="form-check d-none">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                            value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Default radio
+                        </label>
                     </div>
-                    <div class="form-group">
-                        <div class="form-check d-none">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                            <label class="form-check-label" for="exampleRadios1">
-                                Default radio
-                            </label>
-                        </div>
-                        <div class="form-check d-none">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                            <label class="form-check-label" for="exampleRadios2">
-                                Second default radio
-                            </label>
-                        </div>
-                        <input class="d-none" type="radio" name="approved" id="approved_radio" value="true">
-                        <input class="d-none" type="radio" name="approved" id="rejected_radio" value="false">
-                        <button type="submit" name="approve" class="btn btn-success" onclick="document.getElementById('approved_radio').checked=true">Approve <i
-                                class="fas fa-thumbs-up"></i></button>
-                        <button type="submit" name="reject" class="btn btn-danger" onclick="document.getElementById('rejected_radio').checked=true">Reject<i
-                                class="fas fa-thumbs-down"></i></button>
+                    <div class="form-check d-none">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                            value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Second default radio
+                        </label>
                     </div>
-                </form>
+                    <input class="d-none" type="radio" name="approved" id="approved_radio" value="true">
+                    <input class="d-none" type="radio" name="approved" id="rejected_radio" value="false">
+                    <button type="submit" name="approve" class="btn btn-success"
+                        onclick="document.getElementById('approved_radio').checked=true">Approve <i
+                            class="fas fa-thumbs-up"></i></button>
+                    <button type="submit" name="reject" class="btn btn-danger"
+                        onclick="document.getElementById('rejected_radio').checked=true">Reject<i
+                            class="fas fa-thumbs-down"></i></button>
+                </div>
+
             </div>
         </div>
-
-    </div>
-
+    </form>
 </div>
 
 {% endblock %}

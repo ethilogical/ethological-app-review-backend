@@ -39,10 +39,9 @@
             </div>
     </nav>
     <div class="container-fluid">
-
+        {% block content %}
+        {% endblock %}
     </div>
-    {% block content %}
-    {% endblock %}
 
     <!--Added by Stewart-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

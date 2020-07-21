@@ -75,3 +75,7 @@ li.guideline {
 .guideline .btn-group {
     display: inline-block;
 }
+
+.guideline i.fas {
+    margin-left: 10px;
+}

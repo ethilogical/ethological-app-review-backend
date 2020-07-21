@@ -174,6 +174,7 @@ def interaction():
     print(data["approved"])
     print(data["explanation"])
     print(data["next"])
+    print(data)
     print(app_reviews)
     interaction=Interaction(app_id=data["app_id"], approved=data["approved"]=="true", justification=data["explanation"])
     db.session.add(interaction)
