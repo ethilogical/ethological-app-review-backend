@@ -37,13 +37,7 @@ const modify = (name, delta) => {
 {%- endmacro %}
 
 <ol>
-    {{ guideline(1,"https://www.acm.org/code-of-ethics#h-1.1-contribute-to-society-and-to-human-well-being,-acknowledging-that-all-people-are-stakeholders-in-computing.", "Contributes to society and to human well-being.")}}
-
-    {{ guideline(2,"https://www.acm.org/code-of-ethics#h-1.2-avoid-harm.", "Avoids harm.") }}
-    {{ guideline(3,"https://www.acm.org/code-of-ethics#h-1.3-be-honest-and-trustworthy.", "Is honest and trustworthy.") }}
-    {{ guideline(4,"https://www.acm.org/code-of-ethics#h-1.4-be-fair-and-take-action-not-to-discriminate.", "Is fair and takes action not to discriminate.") }}
-    {{ guideline(5,"https://www.acm.org/code-of-ethics#h-1.5-respect-the-work-required-to-produce-new-ideas,-inventions,-creative-works,-and-computing-artifacts.", "Respects the work required to produce new ideas, inventions, creative works, and computing artifacts.") }}
-    {{ guideline(6,"https://www.acm.org/code-of-ethics#h-1.6-respect-privacy.", "Respects privacy.") }}
-    {{ guideline(7,"https://www.acm.org/code-of-ethics#h-1.7-honor-confidentiality.", "Honors confidentiality.") }}
-
+    {% for a_guideline in guidelines %}
+        {{ guideline(a_guideline.number, a_guideline.external_url, a_guideline.short_text)}}
+    {% endfor %}
 </ol>

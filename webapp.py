@@ -23,7 +23,9 @@ class App(db.Model):
     description = db.Column(db.Text, nullable=False)
     next = db.Column(db.Integer, nullable=True)
 
+
 def seed_apps():
+    print("seeding apps...")
     app0 = App(title="City of Harrisonburg Police Department Warrant Planner",
                icon_url="warrant_icon.png",
                preview_url="warrant_preview.png",
@@ -81,6 +83,7 @@ def seed_apps():
             all_apps[i].next = all_apps[i+1].id
     db.session.commit()
 
+
 class Guideline(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     number = db.Column(db.Integer, nullable=True)
@@ -88,7 +91,19 @@ class Guideline(db.Model):
     external_url = db.Column(db.Text, nullable=False)
     description = db.Column(db.Text, nullable=False)
 
+
+def do_log(fn):
+    print("calling do_log")
+
+    def f(a):
+        print("do_log", a)
+        return fn(a)
+    return f
+
+
 def seed_guidelines():
+    print('seeding guidelines...')
+    guidelines_to_seed = []
     guideline1 = Guideline(
         number=1,
         short_text="Contributes to society and to human well-being.",
@@ -96,12 +111,17 @@ def seed_guidelines():
         description=""
     )
 
+    guidelines_to_seed.append(guideline1)
+    db.session.add(guideline1)
+
     guideline2 = Guideline(
         number=2,
         short_text="Avoids harm.",
         external_url="https://www.acm.org/code-of-ethics#h-1.2-avoid-harm.",
         description=""
     )
+    guidelines_to_seed.append(guideline2)
+    db.session.add(guideline2)
 
     guideline3 = Guideline(
         number=3,
@@ -109,6 +129,8 @@ def seed_guidelines():
         external_url="https://www.acm.org/code-of-ethics#h-1.3-be-honest-and-trustworthy.",
         description=""
     )
+    guidelines_to_seed.append(guideline3)
+    db.session.add(guideline3)
 
     guideline4 = Guideline(
         number=4,
@@ -116,6 +138,8 @@ def seed_guidelines():
         external_url="https://www.acm.org/code-of-ethics#h-1.4-be-fair-and-take-action-not-to-discriminate.",
         description=""
     )
+    guidelines_to_seed.append(guideline4)
+    db.session.add(guideline4)
 
     guideline5 = Guideline(
         number=5,
@@ -123,6 +147,8 @@ def seed_guidelines():
         external_url="https://www.acm.org/code-of-ethics#h-1.5-respect-the-work-required-to-produce-new-ideas,-inventions,-creative-works,-and-computing-artifacts.",
         description=""
     )
+    guidelines_to_seed.append(guideline5)
+    db.session.add(guideline5)
 
     guideline6 = Guideline(
         number=6,
@@ -130,6 +156,8 @@ def seed_guidelines():
         external_url="https://www.acm.org/code-of-ethics#h-1.6-respect-privacy.",
         description=""
     )
+    guidelines_to_seed.append(guideline6)
+    db.session.add(guideline6)
 
     guideline7 = Guideline(
         number=7,
@@ -137,14 +165,22 @@ def seed_guidelines():
         external_url="https://www.acm.org/code-of-ethics#h-1.7-honor-confidentiality.",
         description=""
     )
+    guidelines_to_seed.append(guideline7)
+    db.session.add(guideline7)
+    print(guidelines_to_seed)
+
+    map(do_log(db.session.add), guidelines_to_seed)
+    db.session.commit()
+
 
 class Interaction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     app_id = db.Column(db.Integer, db.ForeignKey('app.id'),
-    nullable=False)
+                       nullable=False)
     approved = db.Column(db.Boolean, nullable=False)
     justification = db.Column(db.Text, nullable=False)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+
 
 db.create_all()
 app_reviews = App.query.all()
@@ -152,35 +188,33 @@ if app_reviews is None or len(app_reviews) == 0:
     seed_apps()
     app_reviews = App.query.all()
 
-# app_reviews = {
-# }
-
-# approved_apps = [
-#     app_reviews["2"]
-# ]
-
-# rejected_apps = [
-#     app_reviews["1"], app_reviews["3"]
-# ]
+guidelines = Guideline.query.all()
+if guidelines is None or len(guidelines) == 0:
+    seed_guidelines()
+    guidelines = Guideline.query.all()
 
 
 @app.route("/", strict_slashes=False)
 def home():
     return render_template("home.html")
 
+
 @app.route("/interaction", strict_slashes=False, methods=["POST"])
 def interaction():
-    data=request.form
+    data = request.form
     print(data["approved"])
     print(data["explanation"])
     print(data["next"])
     print(data)
     print(app_reviews)
-    interaction=Interaction(app_id=data["app_id"], approved=data["approved"]=="true", justification=data["explanation"])
+    interaction = Interaction(
+        app_id=data["app_id"], approved=data["approved"] == "true",
+        justification=data["explanation"])
     db.session.add(interaction)
     db.session.commit()
     # Conditionally do something else at the last app to review
     return redirect(url_for("show_review", app_id=data["next"]))
+
 
 @app.route("/about", strict_slashes=False)
 def about():
@@ -192,41 +226,6 @@ def about():
 def show_review(app_id="1", hash=None):
     # get_app_reviews()
     int_app_idx = int(app_id)
-    return render_template("review.html", app_review=app_reviews[int_app_idx-1])
-
-# def show_review(app_id="2", hash=None):
-#     #get_app_reviews()
-
-#     return render_template("review.html", app_review=app_reviews[app_id])
-
-# def show_review(app_id="3", hash=None):
-#     #get_app_reviews()
-
-#     return render_template("review.html", app_review=app_reviews[app_id])
-
-# @app.route("/review_1/app/", strict_slashes=False)
-# @app.route("/review_1/app/<app_id>", strict_slashes=False)
-# def show_review_1(app_id="1", hash=None):
-#     int_app_idx = int(app_id)
-#     return render_template("review_1.html", app_review=app_reviews[int_app_idx])
-
-# @app.route("/review_2/app/", strict_slashes=False)
-# @app.route("/review_2/app/<app_id>", strict_slashes=False)
-# def show_review_2(app_id="1", hash=None):
-#     int_app_idx = int(app_id)
-#     return render_template("review_2.html", app_review=app_reviews[int_app_idx])
-
-# @app.route("/review_3/app/", strict_slashes=False)
-# @app.route("/review_3/app/<app_id>", strict_slashes=False)
-# def show_review_3(app_id="1", hash=None):
-#     int_app_idx = int(app_id)
-#     return render_template("review_3.html", app_review=app_reviews[int_app_idx])
-
-# @app.route("/review_1/app/results", strict_slashes=False)
-# @app.route("/review_2/app/results", strict_slashes=False)
-# @app.route("/review_3/app/results", strict_slashes=False)
-
-
-# @app.route("/review/app/results", strict_slashes=False)
-# def results():
-#     return render_template("results.html", approved_apps=approved_apps, rejected_apps=rejected_apps)
+    return render_template("review.html",
+                           app_review=app_reviews[int_app_idx-1],
+                           guidelines=guidelines)
