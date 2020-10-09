@@ -1,1 +1,1 @@
-web: gunicorn ethological-app-review-backend:webapp
+web: gunicorn webapp:app
