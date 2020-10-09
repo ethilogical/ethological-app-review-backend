@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import random
 import string
 import datetime
+import sqlite3
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
@@ -181,17 +182,20 @@ class Interaction(db.Model):
     justification = db.Column(db.Text, nullable=False)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
-
-db.create_all()
-app_reviews = App.query.all()
-if app_reviews is None or len(app_reviews) == 0:
-    seed_apps()
+try: 
+    db.create_all()
     app_reviews = App.query.all()
+    if app_reviews is None or len(app_reviews) == 0:
+        seed_apps()
+        app_reviews = App.query.all()
 
-guidelines = Guideline.query.all()
-if guidelines is None or len(guidelines) == 0:
-    seed_guidelines()
     guidelines = Guideline.query.all()
+    if guidelines is None or len(guidelines) == 0:
+        seed_guidelines()
+        guidelines = Guideline.query.all()
+
+except sqlite3.OperationalError as issue:
+    print(issue, 'occurred')
 
 
 @app.route("/", strict_slashes=False)
