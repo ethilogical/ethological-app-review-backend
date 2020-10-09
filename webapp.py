@@ -229,3 +229,8 @@ def show_review(app_id="1", hash=None):
     return render_template("review.html",
                            app_review=app_reviews[int_app_idx-1],
                            guidelines=guidelines)
+
+
+if __name__ == '__main__':
+    # Threaded option to enable multiple instances for multiple user access support
+    app.run(threaded=True, port=5000)
